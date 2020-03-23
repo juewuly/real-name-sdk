@@ -8,8 +8,8 @@
     "build": "webpack",
     "prepublish": "webpack"
   },
-  "keywords": [],
-  "author": "ly9",
+  "keywords": ["real-name", "real-name-sdk", "popup", "sdk"],
+  "author": "liuyang9",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.0",
