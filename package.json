@@ -1,6 +1,6 @@
 {
   "name": "real-name-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,12 @@
     "type": "git",
     "url": "git@github.com:juewuly/real-name-sdk.git"
   },
-  "keywords": ["real-name", "real-name-sdk", "popup", "sdk"],
+  "keywords": [
+    "real-name",
+    "real-name-sdk",
+    "popup",
+    "sdk"
+  ],
   "author": "liuyang9",
   "license": "ISC",
   "devDependencies": {
