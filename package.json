@@ -8,6 +8,10 @@
     "build": "webpack",
     "prepublish": "webpack"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:juewuly/real-name-sdk.git"
+  },
   "keywords": ["real-name", "real-name-sdk", "popup", "sdk"],
   "author": "liuyang9",
   "license": "ISC",
