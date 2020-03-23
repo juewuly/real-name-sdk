@@ -102,11 +102,17 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RealNameSdk; });
 /* harmony import */ var _real_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _real_name_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * author: liuyang9
+ * description: 实名认证sdk
+ */
 
 
 
@@ -130,6 +136,11 @@ var RealNameSdk = /*#__PURE__*/function () {
 
       return this.instance;
     }
+  }, {
+    key: "getConfig",
+    value: function getConfig() {
+      return _real_name_config__WEBPACK_IMPORTED_MODULE_1__["default"];
+    }
   }]);
 
   return RealNameSdk;
@@ -143,7 +154,7 @@ var RealNameSdk = /*#__PURE__*/function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RealNameSdk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RealName; });
 /* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_0__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -152,69 +163,127 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * author: liuyang9
+ * description: 实名认证
+ */
 
 
-var RealNameSdk = /*#__PURE__*/function () {
-  function RealNameSdk() {
-    _classCallCheck(this, RealNameSdk);
+var RealName = /*#__PURE__*/function () {
+  function RealName() {
+    _classCallCheck(this, RealName);
 
     this.init();
   }
 
-  _createClass(RealNameSdk, [{
+  _createClass(RealName, [{
     key: "init",
     value: function init() {
       this.$mask = $('<div id="real-name-sdk__mask"></div>');
-      this.$wraper = $('<div id="real-name-sdk__wrap"></div>');
+      this.$wraper = $('<div id="real-name-sdk__wraper"></div>');
       $('body').append(this.$mask).append(this.$wraper);
-      this.isShow = false;
+      this.isShowing = false;
     }
+    /**
+     * 显示提示层
+     * @param {*} param0 
+     */
+
   }, {
     key: "show",
-    value: function show() {
-      if (this.isShow) {
+    value: function show(_ref) {
+      var title = _ref.title,
+          subTitle = _ref.subTitle,
+          content = _ref.content,
+          maskOpacity = _ref.maskOpacity,
+          style = _ref.style;
+
+      if (this.isShowing) {
         return;
       }
 
-      this.isShow = true;
-      var tip = this.getPayTip();
+      this.isShowing = true;
+      var tip = this.getTip({
+        title: title,
+        subTitle: subTitle,
+        content: content
+      });
       this.$wraper.append(tip);
+      this.setMaskOpacity(maskOpacity);
+      this.setWraperStyle(style);
       this.$mask.css('display', 'block');
       this.$wraper.css('display', 'block');
     }
+    /**
+     * 设置背景罩的透明度
+     * @param {*} opacity 
+     */
+
   }, {
-    key: "close",
-    value: function close() {
-      if (!this.isShow) {
+    key: "setMaskOpacity",
+    value: function setMaskOpacity(opacity) {
+      if (opacity === undefined) {
         return;
       }
 
-      this.isShow = false;
+      this.$mask.css({
+        opacity: opacity.toString(),
+        filter: "alpha(opacity=".concat(opacity * 100)
+      });
+    }
+    /**
+     * 设置提示信息的容器样式
+     * @param {*} style 
+     */
+
+  }, {
+    key: "setWraperStyle",
+    value: function setWraperStyle(style) {
+      if (style) {
+        this.$wraper.css(style);
+      }
+    }
+    /**
+     * 关闭提示层
+     */
+
+  }, {
+    key: "close",
+    value: function close() {
+      if (!this.isShowing) {
+        return;
+      }
+
+      this.isShowing = false;
       this.$mask.css('display', 'none');
       this.$wraper.css('display', 'none').empty();
     }
+    /**
+     * 获取提示信息
+     * @param {*} param0 
+     */
+
   }, {
     key: "getTip",
-    value: function getTip() {
-      return "\n      <div class='tip'>\n        <h3 class='tip__title'>\u60A8\u4ECA\u65E5\u5728\u8BE5\u6E38\u620F\u65F6\u957F\u5DF2\u7ECF\u8FBE\u5230\u4E0A\u9650</h3>\n        <p class='tip__content'>\n          \u6839\u636E\u300A\u5173\u4E8E\u9632\u6B62\u672A\u6210\u5E74\u4EBA\u6C89\u8FF7\u7F51\u7EDC\u6E38\u620F\u7684\u901A\u77E5\u300B\uFF0C\u672A\u6210\u5E74\u7528\u6237\u6CD5\u5B9A\n          \u8282\u5047\u65E5\u6BCF\u65E5\u7D2F\u8BA1\u4E0D\u5F97\u8D85\u8FC73\u5C0F\u65F6\uFF0C\u5176\u5B83\u65F6\u95F4\u6BCF\u65E5\u4E0D\u5F97\u8D85\u8FC71.5\u5C0F\u65F6\n        </p>\n      </div>\n    ";
-    }
-  }, {
-    key: "getPayTip",
-    value: function getPayTip() {
-      return "\n      <div class='tip'>\n        <h3 class='tip__title'>\u6839\u636E\u76F8\u5173\u90E8\u95E8\u5BF9\u4E8E\u672A\u6210\u5E74\u7528\u6237\u76D1\u7BA1\u8981\u6C42\uFF0C\u8BE5\u5E10\u53F7\u80FD\u5145\u503C\u6E38\u620F</h3>\n        <p class='tip__content'>\n          \u6839\u636E\u300A\u5173\u4E8E\u9632\u6B62\u672A\u6210\u5E74\u4EBA\u6C89\u8FF7\u7F51\u7EDC\u6E38\u620F\u7684\u901A\u77E5\u300B\uFF0C\u7F51\u7EDC\u6E38\u620F\u4F01\u4E1A\u4E0D\u5F97\u4E3A\u672A\u6EE18\u5468\u5C81\u4EE5\u4E0B\u7528\u6237\u63D0\u4F9B\u6E38\u620F\u4ED8\u8D39\u670D\u52A1\n        </p>\n      </div>\n    ";
+    value: function getTip(_ref2) {
+      var title = _ref2.title,
+          subTitle = _ref2.subTitle,
+          content = _ref2.content;
+      var subTitleEle = subTitle ? "<h3 class='tip-content__sub-title'>".concat(subTitle, "</h3>") : '';
+      return "\n      <div class='tip'>\n        <div class='tip-content'>\n          <h3 class='tip-content__title'>".concat(title, "</h3>\n          ").concat(subTitleEle, "\n          <p class='tip-content__content'>").concat(content, "</p>\n        </div>\n      </div>\n    ");
     }
   }], [{
     key: "getInstance",
     value: function getInstance() {
       if (!this.instance) {
-        this.instance = new RealNameSdk();
+        this.instance = new RealName();
       }
 
       return this.instance;
     }
   }]);
 
-  return RealNameSdk;
+  return RealName;
 }();
 
 
@@ -528,7 +597,7 @@ module.exports = function (list, options) {
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "#real-name-sdk__mask {\n  display: none;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: #000;\n  /* opacity: 0.4;\n    filter: alpha(opacity=40); */\n}\n#real-name-sdk__wrap {\n  display: none;\n  width: 700px;\n  height: 200px;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  background-color: #fff;\n  padding: 50px;\n}\n#real-name-sdk__wrap .tip__title {\n  text-align: center;\n}\n#real-name-sdk__wrap .tip__content {\n  margin-top: 20px;\n  line-height: 30px;\n}\n", ""]);
+exports.push([module.i, "#real-name-sdk__mask {\n  display: none;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: #000;\n  /* opacity: 0.4;\n    filter: alpha(opacity=40); */\n}\n#real-name-sdk__wraper {\n  display: none;\n  width: 650px;\n  height: 230px;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  margin: auto;\n  background-color: #fff;\n  padding: 40px;\n}\n#real-name-sdk__wraper .tip {\n  display: table;\n  height: 100%;\n}\n#real-name-sdk__wraper .tip-content {\n  display: table-cell;\n  vertical-align: middle;\n}\n#real-name-sdk__wraper .tip-content__title {\n  text-align: center;\n  line-height: 35px;\n}\n#real-name-sdk__wraper .tip-content__sub-title {\n  text-align: center;\n  line-height: 35px;\n}\n#real-name-sdk__wraper .tip-content__content {\n  margin-top: 30px;\n  line-height: 30px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -632,6 +701,65 @@ function toComment(sourceMap) {
   var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
   return "/*# ".concat(data, " */");
 }
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * author: liuyang9
+ * description: 提示信息的相关配置
+ */
+// 通知名称
+var NoticeName = '《关于防止未成年人沉迷网络游戏的通知》';
+var Config = {
+  // 支付相关提示信息的配置
+  pay: {
+    // 年龄小于8周岁的提示
+    ageLessThanEight: {
+      title: '根据相关部门对于未成年用户监管要求，该帐号能充值游戏',
+      content: "\u6839\u636E".concat(NoticeName, "\uFF0C\u7F51\u7EDC\u6E38\u620F\u4F01\u4E1A\u4E0D\u5F97\u4E3A\u672A\u6EE18\u5468\u5C81\u4EE5\u4E0B\u7528\u6237\u63D0\u4F9B\u6E38\u620F\u4ED8\u8D39\u670D\u52A1"),
+      style: {
+        height: '200px'
+      }
+    },
+    // 8-16周岁充值金额达到上限的提示
+    ageLessThanSixteen: {
+      title: '该月已累计充值金额已达到上限',
+      subTitle: '每个累积充值不能超过200元',
+      content: "\u6839\u636E".concat(NoticeName, "\uFF0C8-16\u5C81\u7528\u6237\u5355\u6B21\u5145\u503C\u91D1\u989D\u4E0D\u5F97\u8D85\u8FC750\u5143\u4EBA\u6C11\u5E01\uFF0C\u6BCF\u6708\u5145\u503C\u91D1\u989D\u7D2F\u8BA1\u4E0D\u5F97\u8D85\u8FC7200\u5143\u4EBA\u6C11\u5E01"),
+      maskOpacity: '0.3',
+      style: {
+        height: '235px'
+      }
+    },
+    // 16-18周岁充值金额达到上限的提示
+    ageLessThanEighteen: {
+      title: '该月已累计充值金额已达到上限',
+      subTitle: '每个累积充值不能超过400元',
+      content: "\u6839\u636E".concat(NoticeName, "\uFF0C16-18\u5C81\u7528\u6237\u5355\u6B21\u5145\u503C\u91D1\u989D\u4E0D\u5F97\u8D85\u8FC7100\u5143\u4EBA\u6C11\u5E01\uFF0C\u6BCF\u6708\u5145\u503C\u91D1\u989D\u7D2F\u8BA1\u4E0D\u5F97\u8D85\u8FC7400\u5143\u4EBA\u6C11\u5E01"),
+      maskOpacity: '0.3',
+      style: {
+        height: '235px'
+      }
+    }
+  },
+  // 登录相关提示信息的配置
+  login: {
+    // 游戏时长已达到上限的提示
+    gameTimeLimit: {
+      title: '您今日在该游戏时长已达到上限',
+      content: "\u6839\u636E".concat(NoticeName, "\uFF0C\u672A\u6210\u5E74\u7528\u6237\u6CD5\u5B9A\u8282\u5047\u65E5\u6BCF\u65E5\u7D2F\u8BA1\u4E0D\u5F97\u8D85\u8FC73\u5C0F\u65F6\uFF0C\u5176\u5B83\u65F6\u95F4\u6BCF\u65E5\u4E0D\u5F97\u8D85\u8FC71.5\u5C0F\u65F6"),
+      style: {
+        width: '600px',
+        height: '200px'
+      }
+    }
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Config);
 
 /***/ })
 /******/ ])["default"];

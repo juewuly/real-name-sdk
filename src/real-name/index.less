@@ -1,0 +1,53 @@
+#real-name-sdk {
+  &__mask {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+    /* opacity: 0.4;
+    filter: alpha(opacity=40); */
+  }
+
+  &__wraper {
+    display: none;
+    width: 650px;
+    height: 230px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #fff;
+    padding: 40px;
+
+    .tip {
+      display: table;
+      height: 100%;
+
+      &-content {
+        display: table-cell;
+        vertical-align: middle;
+
+        &__title {
+          text-align: center;
+          line-height: 35px
+        }
+
+        &__sub-title {
+          text-align: center;
+          line-height: 35px
+        }
+  
+        &__content {
+          margin-top: 30px;
+          line-height: 30px;
+        }
+      }
+      
+    }
+  }
+}

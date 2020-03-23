@@ -1,11 +1,10 @@
 
 const TerserPlugin = require('terser-webpack-plugin');
-const path = require('path');
 
 module.exports = {
     entry: {
-        'real-name': './src/index.js',
-        'real-name.min': './src/index.js'
+        'real-name-sdk': './src/index.js',
+        'real-name-sdk.min': './src/index.js'
     },
     output: {
         filename: '[name].js',
