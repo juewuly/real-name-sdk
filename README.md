@@ -1,4 +1,4 @@
-> 实名认证SDK，提供相关提示信息的弹出层显示
+> 实名认证SDK，弹窗显示相关提示信息
 
 * [Features](#features)
 * [Installing](#installing)
@@ -9,20 +9,23 @@
 ***
 
 ## Features
-* 弹窗提示用户相关信息
+* 弹窗显示相关信息
 
 ## Installing
 real-name-sdk 可以通过npm安装
 
 **NPM**
 ```bash
-$ npm i postmate --save
+$ npm i real-name-sdk --save
 ```
 
 ## Usage
 1. 执行`const Config = RealNameSdk.getConfig()`获取弹窗信息的相关配置。
+
 2. 执行`const Instance = RealNameSdk.getInstance()`获取操作弹窗的实例.
+
 3. 执行`Instance.show(Config.pay.ageLessThanEight)`显示弹窗。
+
 4. 执行`Instance.close()`关闭弹窗。
 
 ***
@@ -105,7 +108,7 @@ $ npm i postmate --save
 > ## `RealNameSdk.getInstance()`
 
 ```javascript
-  RealNameSdk.getInstance();
+  const Instance = RealNameSdk.getInstance();
 ```
 > `getInstance()`用于获取`RealNameSdk`的实例。
 单例模式，多次调用只`new`一次，和 `new RealNameSdk()`等效。
