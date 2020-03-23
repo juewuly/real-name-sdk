@@ -12,11 +12,16 @@
 * 弹窗显示相关信息
 
 ## Installing
-real-name-sdk 可以通过npm安装
+real-name-sdk 可以通过npm安装, 或者script标签直接引入。依赖jquery库，需要先引入jquery。
 
 **NPM**
 ```bash
 $ npm i real-name-sdk --save
+```
+
+**SCRIPT**
+```bash
+  <script type="text/javascript" src="https://unpkg.com/real-name-sdk@1.0.1/dist/real-name-sdk.min.js"></script>
 ```
 
 ## Usage
