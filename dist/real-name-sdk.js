@@ -126,6 +126,10 @@ var RealNameSdk = /*#__PURE__*/function () {
 
     return RealNameSdk.instance;
   }
+  /**
+   * 获取单例
+   */
+
 
   _createClass(RealNameSdk, null, [{
     key: "getInstance",
@@ -136,6 +140,10 @@ var RealNameSdk = /*#__PURE__*/function () {
 
       return this.instance;
     }
+    /**
+     * 获取相关提示信息的配置
+     */
+
   }, {
     key: "getConfig",
     value: function getConfig() {
