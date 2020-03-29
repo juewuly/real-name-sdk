@@ -1,20 +1,21 @@
 #real-name-sdk {
   &__mask {
     display: none;
-    position: absolute;
+    position: fixed;
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: #000;
     /* opacity: 0.4;
     filter: alpha(opacity=40); */
   }
 
   &__wraper {
+    box-sizing: border-box;
     display: none;
-    width: 650px;
-    height: 230px;
+    width: 700px;
+    height: 280px;
     position: absolute;
     left: 0;
     right: 0;
@@ -23,6 +24,18 @@
     margin: auto;
     background-color: #fff;
     padding: 40px;
+
+    .close {
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
+      background: url("https://p4.ssl.qhimg.com/t013d31002fab72ccdc.png") center center no-repeat;
+      background-size: contain;
+      cursor: pointer;
+    }
 
     .tip {
       display: table;

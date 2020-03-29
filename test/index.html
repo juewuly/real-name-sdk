@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript" src="https://s0.ssl.qhres.com/!915880e2/1102.js"></script>
+  <!-- <script type="text/javascript" src="../dist/real-name-sdk.min.js"></script> -->
+
+  <% for (var jsIndex in htmlWebpackPlugin.files.js) { %>
+    <script type="text/javascript" src="<%=htmlWebpackPlugin.files.js[jsIndex] %>"></script>
+  <% } %>
+
+  <script>
+    // 测试
+    const SdkInstance = RealNameSdk.getInstance();
+    const SdkConfig = RealNameSdk.getConfig();
+    a;
+    SdkInstance.show(SdkConfig.login.gameTimeLimit);
+  </script>
+</body>
+</html>

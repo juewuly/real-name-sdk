@@ -24,15 +24,30 @@ export default class RealName {
     this.$wraper = $('<div id="real-name-sdk__wraper"></div>');
     $('body').append(this.$mask).append(this.$wraper);
     this.isShowing = false;
+
+    this.listenClose();
+  }
+
+  /**
+   * 监听关闭
+   */
+  listenClose() {
+    this.$wraper.on('click', '.close', () => {
+      this.close();
+    })
   }
 
   /**
    * 显示提示层
    * @param {*} param0 
    */
-  show({ title, subTitle, content, maskOpacity, style }) {
+  show({ title, subTitle, content, maskOpacity, style, canClose }) {
     if (this.isShowing) {
       return;
+    }
+
+    if (canClose) {
+      this.$wraper.append($('<i class="close" />'));
     }
 
     this.isShowing = true;

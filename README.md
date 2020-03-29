@@ -68,7 +68,7 @@ $ npm i real-name-sdk --save
         title: '根据相关部门对于未成年用户监管要求，该帐号能充值游戏',
         content: `根据${NoticeName}，网络游戏企业不得为未满8周岁以下用户提供游戏付费服务`,
         style: {
-          height: '200px'
+          height: '250px'
         }
       },
 
@@ -79,7 +79,7 @@ $ npm i real-name-sdk --save
         content: `根据${NoticeName}，8-16岁用户单次充值金额不得超过50元人民币，每月充值金额累计不得超过200元人民币`,
         maskOpacity: '0.3',
         style: {
-          height: '235px'
+          height: '300px'
         }
       },
 
@@ -90,7 +90,7 @@ $ npm i real-name-sdk --save
         content: `根据${NoticeName}，16-18岁用户单次充值金额不得超过100元人民币，每月充值金额累计不得超过400元人民币`,
         maskOpacity: '0.3',
         style: {
-          height: '235px'
+          height: '300px'
         }
       }
     },
@@ -102,8 +102,8 @@ $ npm i real-name-sdk --save
         title: '您今日在该游戏时长已达到上限',
         content: `根据${NoticeName}，未成年用户法定节假日每日累计不得超过3小时，其它时间每日不得超过1.5小时`,
         style: {
-          width: '600px',
-          height: '200px'
+          width: '680px',
+          height: '250px'
         }
       },
     }
@@ -126,8 +126,8 @@ $ npm i real-name-sdk --save
     subTitle: '根据《关于防止未成年人沉迷网络游戏的通知》，8-16岁用户单次充值金额不得超过50元人民币，每月充值金额累计不得超过200元人民币',
     maskOpacity: '0.3',
     style: {
-        width: '650px',
-        height: '235px'
+        width: '700px',
+        height: '300px'
       }
   });
 ```
@@ -138,7 +138,7 @@ $ npm i real-name-sdk --save
 | title | `String`（必填） | 弹窗的标题 | --- |
 | subTitle | `String` | 弹窗的子标题 | --- |
 | maskOpacity | `String` | 弹窗背景罩的透明度 | `1` |
-| style | `Object` | 可设置弹窗的宽高 | `{width: '650px', height: '2235px'}` |
+| style | `Object` | 可设置弹窗的宽高 | `{width: '700px', height: '250px'}` |
 
 > `show(options)`里参数也可以从`Config`里获取。
 
