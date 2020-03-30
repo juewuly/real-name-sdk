@@ -12,7 +12,7 @@ const Config = {
   pay: {
     // 年龄小于8周岁的提示
     ageLessThanEight: {
-      title: '根据相关部门对于未成年用户监管要求，该帐号能充值游戏',
+      title: '根据相关部门对于未成年用户监管要求，该帐号不能充值游戏',
       content: `根据${NoticeName}，网络游戏企业不得为未满8周岁以下用户提供游戏付费服务。`,
       style: {
         height: '250px'

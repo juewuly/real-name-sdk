@@ -753,7 +753,7 @@ var Config = {
   pay: {
     // 年龄小于8周岁的提示
     ageLessThanEight: {
-      title: '根据相关部门对于未成年用户监管要求，该帐号能充值游戏',
+      title: '根据相关部门对于未成年用户监管要求，该帐号不能充值游戏',
       content: "\u6839\u636E".concat(NoticeName, "\uFF0C\u7F51\u7EDC\u6E38\u620F\u4F01\u4E1A\u4E0D\u5F97\u4E3A\u672A\u6EE18\u5468\u5C81\u4EE5\u4E0B\u7528\u6237\u63D0\u4F9B\u6E38\u620F\u4ED8\u8D39\u670D\u52A1\u3002"),
       style: {
         height: '250px'
