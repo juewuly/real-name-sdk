@@ -17,8 +17,16 @@
     // 测试
     const SdkInstance = RealNameSdk.getInstance();
     const SdkConfig = RealNameSdk.getConfig();
-    a;
-    SdkInstance.show(SdkConfig.login.gameTimeLimit);
+    var testConfig = SdkConfig.login.gameTimeLimit;
+    testConfig.style = {
+      height: '250px',
+      color: '#fff',
+      backgroundColor: '#000',
+      width: '626px',
+      height: '410px',
+    }
+    testConfig.maskOpacity = 0;
+    SdkInstance.show(testConfig);
   </script>
 </body>
 </html>
